@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.cdnfonts.com/css/segoe-ui-4" rel="stylesheet">
+    <title>Fake window-minimize</title>
+</head>
+<body>
+    <button onclick="openWindow('assets/icon.png', 'Title', 'https://google.com')">open window</button>
+    <div class="window" id="window">
+        <div class="window-header" id="window-header">
+            <div class="title">
+                <img src="assets/icon.png" class="window-icon">
+                <p class="window-title">Title</p>
+            </div>
+            <div class="controls">
+                <button class="window-minimize"></button>
+                <button class="window-maximize"></button>
+                <button class="window-close" onclick="this.parentElement.parentElement.parentElement.remove();"></button>
+            </div>
+        </div>
+        <iframe src="" frameborder="0" style="width: 100%; height: 100%;" class="iframe" id="iframe"></iframe>
+    </div>
+    <script src="scripts/window.js"></script>
+</body>
+<style>
+    body {
+        -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* IE 10 and IE 11 */
+        user-select: none; /* Standard syntax */
+        overflow: hidden;
+    }
+
+    #window {
+        display: none;
+    }
+
+    .window{
+        min-width: 350px;
+        min-height: 250px;
+        background-color: #ffffff;
+        border: 1px solid #000000;
+        border-radius: 8px;
+        padding: 0;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+        position: absolute;
+        z-index: 111;
+        resize: both;
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+        cursor: default;
+    }
+    
+    .window-icon {
+        width: 16px;
+        height: 16px;
+        margin: 3px 10px 3px 10px;
+    }
+
+    .window-header {
+        display: flex;
+        justify-content: space-between;
+        z-index: 10;
+    }
+
+    .title {
+        display: flex;
+        flex-direction: row;
+        padding: 4px;
+    }
+
+    .title p {
+        margin: 0 10px 0 10px;
+        font-family: 'Segoe UI', sans-serif;
+        font-size: 16px;
+    }
+
+    .window-close {
+        height: 16px;
+        width: 16px;
+        background-color: transparent;
+        background: #fff url(assets/close.png) center center/cover no-repeat;
+        background-size: 16px;
+        border: none;
+        color: inherit;
+        margin: 7px 7px 7px 10px;
+        padding: 4px;
+        transition: 0.2s;
+        outline: 7px solid white;
+    }
+
+    .window-close:hover {
+        background-color: #ff0000;
+        outline: 7px solid #ff0000;
+    }
+
+    .window-maximize {
+        height: 16px;
+        width: 16px;
+        background-color: transparent;
+        background: #fff url(assets/maximize.png) center center/cover no-repeat;
+        background-size: 16px;
+        border: none;
+        color: inherit;
+        margin: 7px 7px 7px 10px;
+        padding: 4px;
+    }
+
+    .window-minimize {
+        height: 16px;
+        width: 16px;
+        background-color: transparent;
+        background: #fff url(assets/minimize.png) center center/cover no-repeat;
+        background-size: 16px;
+        border: none;
+        color: inherit;
+        margin: 7px 7px 7px 10px;
+        padding: 4px;
+    }
+</style>
+</html>
