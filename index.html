@@ -17,13 +17,14 @@
             </div>
             <div class="controls">
                 <button class="window-minimize"></button>
-                <button class="window-maximize"></button>
-                <button class="window-close" onclick="this.parentElement.parentElement.parentElement.remove();"></button>
+                <button class="window-maximize" onclick="maximize(this);"></button>
+                <button class="window-close" onclick="quit(this);"></button>
             </div>
         </div>
         <iframe src="" frameborder="0" style="width: 100%; height: 100%;" class="iframe" id="iframe"></iframe>
     </div>
     <script src="scripts/window.js"></script>
+    <script src="scripts/controls.js"></script>
 </body>
 <style>
     body {
@@ -40,6 +41,8 @@
     .window{
         min-width: 350px;
         min-height: 250px;
+        width: 350px;
+        height: 250px;
         background-color: #ffffff;
         border: 1px solid #000000;
         border-radius: 8px;
@@ -89,7 +92,7 @@
         margin: 7px 7px 7px 10px;
         padding: 4px;
         transition: 0.2s;
-        outline: 7px solid white;
+        outline: 7px solid transparent;
     }
 
     .window-close:hover {
@@ -107,6 +110,13 @@
         color: inherit;
         margin: 7px 7px 7px 10px;
         padding: 4px;
+        transition: 0.2s;
+        outline: 7px solid transparent;
+    }
+
+    .window-maximize:hover {
+        background-color: #747474;
+        outline: 7px solid #747474;
     }
 
     .window-minimize {
@@ -119,6 +129,14 @@
         color: inherit;
         margin: 7px 7px 7px 10px;
         padding: 4px;
+        transition: 0.2s;
+        outline: 7px solid transparent;
     }
+
+    .window-minimize:hover {
+        background-color: #747474;
+        outline: 7px solid #747474;
+    }
+
 </style>
 </html>

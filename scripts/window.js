@@ -15,26 +15,6 @@ function openWindow(icon, title, URL) {
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 dragElement(document.getElementById("window"));
 
 function dragElement(elmnt) {
