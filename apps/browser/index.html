@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser</title>
+</head>
+<body onresize="resize()">
+    <header>
+        <div class="tabs">
+            <p class="tab" id="tab1" onclick="selectTab(this, 'iframe1')">tab1</p>
+            <p class="tab" id="tab2" onclick="selectTab(this, 'iframe2')">tab2</p>
+            <p class="tab" id="tab3" onclick="selectTab(this, 'iframe3')">tab3</p>
+        </div>
+    </header>
+    <main>
+        <iframe src="https://jcionx.github.io/" frameborder="0" class="tabView" id="iframe1"></iframe>
+        <iframe src="https://jcionx.github.io/" frameborder="0" class="tabView" id="iframe2"></iframe>
+        <iframe src="https://jcionx.github.io/" frameborder="0" class="tabView" id="iframe3"></iframe>
+    </main>
+    <script>
+        let selectedTab = null;
+
+        function selectTab(tab, iframe) {
+            document.querySelectorAll('.tab').forEach(tab => tab.style.backgroundColor = 'white');
+            document.querySelectorAll('.tabView').forEach(iframe => iframe.style.display = 'none');
+            tab.style.backgroundColor = 'lightgray';
+            document.getElementById(iframe).style.display = 'block';
+            selectedTab = tab;
+        }
+
+        function resize() {
+            document.getElementById('iframe1').style.height = (window.innerHeight - 50) + 'px';
+            document.getElementById('iframe2').style.height = (window.innerHeight - 50) + 'px';
+            document.getElementById('iframe3').style.height = (window.innerHeight - 50) + 'px';
+        }
+        
+        resize();
+        selectTab(document.getElementById('tab1'), 'iframe1')
+
+        document.addEventListener('contextmenu', event => event.preventDefault());
+    </script>
+</body>
+<style>
+    body {
+        -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* IE 10 and IE 11 */
+        user-select: none; /* Standard syntax */
+        margin: 0;
+    }
+
+    .tabs {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .tab {
+        width: 33.33%;
+        text-align: center;
+        border: solid 1px black;
+        margin: 0;
+        padding: 8px;
+    }
+
+    .tabView {
+        position: absolute;
+        width: 100%;
+    }
+</style>
+</html>
