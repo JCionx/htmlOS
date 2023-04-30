@@ -4,23 +4,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.cdnfonts.com/css/segoe-ui-4" rel="stylesheet">
     <title>Browser</title>
 </head>
 <body onresize="resize()">
     <header>
+        <div id="helpModal" class="helpModal">
+            <div class="helpModal-content">
+                <span class="helpModal-close">&times;</span>
+                <h2>Websites not loading?</h2>
+                <p>Most websites have a protection to avoid being loaded on an iframe. To load these websites anyway, you need to install an extension:</p>
+                <a href="https://chrome.google.com/webstore/detail/hiframe-the-hyper-iframe/joibipdfkleencgfgbbncoheaekffdfn" target="_blank">Download for Chromium Based browsers</a>
+                <br>
+                <a href="https://addons.mozilla.org/firefox/addon/ignore-x-frame-options-header/" target="_blank">Download for Firefox</a>
+            </div>
+        </div>
         <div class="tabs">
-            <p class="tab" id="tab1" onclick="selectTab(this, 'iframe1')">tab1</p>
-            <p class="tab" id="tab2" onclick="selectTab(this, 'iframe2')">tab2</p>
-            <p class="tab" id="tab3" onclick="selectTab(this, 'iframe3')">tab3</p>
+            <p class="tab" id="tab1" onclick="selectTab(this, 'iframe1')">Tab 1</p>
+            <p class="tab" id="tab2" onclick="selectTab(this, 'iframe2')">Tab 2</p>
+            <p class="tab" id="tab3" onclick="selectTab(this, 'iframe3')">Tab 3</p>
+        </div>
+        <div class="controls">
+            <img src="assets/home.png" class="btn" onclick="goHome()">
+            <img src="assets/refresh.png" class="btn" onclick="refresh()">
+            <input type="text" class="urlInput" id="urlInput">
+            <img src="assets/return.png" class="btn" onclick="go()">
+            <img src="assets/help.png" class="btn" id="helpBtn">
         </div>
     </header>
     <main>
-        <iframe src="https://jcionx.github.io/" frameborder="0" class="tabView" id="iframe1"></iframe>
-        <iframe src="https://jcionx.github.io/" frameborder="0" class="tabView" id="iframe2"></iframe>
-        <iframe src="https://jcionx.github.io/" frameborder="0" class="tabView" id="iframe3"></iframe>
+        <iframe src="https://google.com/" frameborder="0" class="tabView" id="iframe1"></iframe>
+        <iframe src="https://google.com/" frameborder="0" class="tabView" id="iframe2"></iframe>
+        <iframe src="https://google.com/" frameborder="0" class="tabView" id="iframe3"></iframe>
     </main>
     <script>
         let selectedTab = null;
+        let selectedIframe = null;
 
         function selectTab(tab, iframe) {
             document.querySelectorAll('.tab').forEach(tab => tab.style.backgroundColor = 'white');
@@ -28,14 +47,47 @@
             tab.style.backgroundColor = 'lightgray';
             document.getElementById(iframe).style.display = 'block';
             selectedTab = tab;
+            selectedIframe = document.getElementById(iframe);
         }
 
         function resize() {
-            document.getElementById('iframe1').style.height = (window.innerHeight - 50) + 'px';
-            document.getElementById('iframe2').style.height = (window.innerHeight - 50) + 'px';
-            document.getElementById('iframe3').style.height = (window.innerHeight - 50) + 'px';
+            document.getElementById('iframe1').style.height = (window.innerHeight - 85) + 'px';
+            document.getElementById('iframe2').style.height = (window.innerHeight - 85) + 'px';
+            document.getElementById('iframe3').style.height = (window.innerHeight - 85) + 'px';
         }
         
+        let home_url = 'https://google.com/';
+
+        function goHome() {
+            selectedIframe.src = home_url;
+        }
+
+        function refresh() {
+            selectedIframe.src = selectedIframe.src;
+        }
+
+        function go() {
+            selectedIframe.src = document.getElementById('urlInput').value;
+        }
+        
+        let helpModal = document.getElementById('helpModal');
+        let helpBtn = document.getElementById('helpBtn');
+        let helpClose = document.getElementsByClassName('helpModal-close')[0];
+
+        helpBtn.onclick = function() {
+            helpModal.style.display = 'block';
+        }
+
+        helpClose.onclick = function() {
+            helpModal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == helpModal) {
+                helpModal.style.display = 'none';
+            }
+        }
+
         resize();
         selectTab(document.getElementById('tab1'), 'iframe1')
 
@@ -48,6 +100,7 @@
         -ms-user-select: none; /* IE 10 and IE 11 */
         user-select: none; /* Standard syntax */
         margin: 0;
+        font-family: 'Segoe UI', sans-serif;
     }
 
     .tabs {
@@ -55,17 +108,70 @@
         flex-direction: row;
     }
 
+    .controls {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .btn {
+        width: 30px;
+        height: 25px;
+        margin: 5px;
+        cursor: pointer;
+    }
+
+    .urlInput {
+        width: 100%;
+        margin: 3px;
+    }
+
     .tab {
         width: 33.33%;
         text-align: center;
-        border: solid 1px black;
         margin: 0;
         padding: 8px;
+        border-radius: 10px;
     }
 
     .tabView {
         position: absolute;
         width: 100%;
+    }
+
+    .helpModal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    .helpModal-content {
+        background-color: #fefefe;
+        margin: 15% auto; /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%; /* Could be more or less, depending on screen size */
+    }
+
+    .helpModal-close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .helpModal-close:hover,
+    .helpModal-close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
     }
 </style>
 </html>
