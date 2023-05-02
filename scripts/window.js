@@ -1,7 +1,6 @@
 const windows = []
 
 function openWindow(icon, title, URL) {
-
     const window = document.getElementById("window");
     windows.push(window.cloneNode(true));
     const clonedWindow = windows[windows.length - 1];
@@ -12,7 +11,7 @@ function openWindow(icon, title, URL) {
     clonedWindow.querySelector(".iframe").setAttribute("src", URL);
     document.body.appendChild(clonedWindow);
     dragElement(document.getElementById(clonedWindow.id));
-
+    closeMenu();
 }
 
 dragElement(document.getElementById("window"));

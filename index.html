@@ -10,8 +10,6 @@
     <title>HtmlOS</title>
 </head>
 <body>
-    <button onclick="openWindow('assets/icon.png', 'Browser', 'apps/browser/index.html')">Browser</button>
-    <button onclick="openWindow('assets/icon.png', 'Clock', 'apps/clock/index.html')">Clock</button>
     <div class="window" id="window">
         <div class="window-header" id="window-header">
             <div class="title">
@@ -30,31 +28,18 @@
         <h1>Apps</h1>
         <h2>System Apps</h2>
         <div class="menu-apps">
-            <img src="assets/icon.png">
-            <img src="assets/icon.png">
-            <img src="assets/icon.png">
-            <img src="assets/icon.png">
-            <img src="assets/icon.png">
+            <img src="assets/browser.png" id="menu-app" onclick="openWindow('assets/browser.png', 'Browser', 'apps/browser/index.html')">
+            <img src="assets/clock.png" onclick="openWindow('assets/clock.png', 'Clock', 'apps/clock/index.html')">
         </div>
         <h2>Other Apps</h2>
-        <div class="menu-apps">
-            <img src="assets/icon.png">
-            <img src="assets/icon.png">
-            <img src="assets/icon.png">
-            <img src="assets/icon.png">
-            <img src="assets/icon.png">
-            <img src="assets/icon.png">
-            <img src="assets/icon.png">
-            <img src="assets/icon.png">
-            <img src="assets/icon.png">
-            <img src="assets/icon.png">
+        <div class="menu-apps" id="user-apps">
         </div>
     </div>
     <footer>
         <div class="taskbar-apps">
-            <img src="assets/icon.png" onclick="toggleMenu()">
-            <img src="assets/icon.png">
-            <img src="assets/icon.png">
+            <img src="assets/menu.png" onclick="toggleMenu()">
+            <img src="assets/browser.png" id="taskbar-app" onclick="openWindow('assets/browser.png', 'Browser', 'apps/browser/index.html')">
+            <img src="assets/clock.png" onclick="openWindow('assets/clock.png', 'Clock', 'apps/clock/index.html')">
         </div>
         <div class="taskbar-center">
             <p id="taskbar-hours"></p>
@@ -73,6 +58,11 @@
         user-select: none; /* Standard syntax */
         overflow: hidden;
         font-family: 'Roboto', sans-serif;
+        background: url(assets/wallpaper.png) no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
     }
 
     #window {
