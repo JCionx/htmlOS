@@ -26,9 +26,33 @@
         </div>
         <iframe src="" frameborder="0" style="width: 100%; height: 100%;" class="iframe" id="iframe"></iframe>
     </div>
+    <div class="menu" id="menu">
+        <h1>Apps</h1>
+        <h2>System Apps</h2>
+        <div class="menu-apps">
+            <img src="assets/icon.png">
+            <img src="assets/icon.png">
+            <img src="assets/icon.png">
+            <img src="assets/icon.png">
+            <img src="assets/icon.png">
+        </div>
+        <h2>Other Apps</h2>
+        <div class="menu-apps">
+            <img src="assets/icon.png">
+            <img src="assets/icon.png">
+            <img src="assets/icon.png">
+            <img src="assets/icon.png">
+            <img src="assets/icon.png">
+            <img src="assets/icon.png">
+            <img src="assets/icon.png">
+            <img src="assets/icon.png">
+            <img src="assets/icon.png">
+            <img src="assets/icon.png">
+        </div>
+    </div>
     <footer>
         <div class="taskbar-apps">
-            <img src="assets/icon.png">
+            <img src="assets/icon.png" onclick="toggleMenu()">
             <img src="assets/icon.png">
             <img src="assets/icon.png">
         </div>
@@ -40,6 +64,7 @@
     <script src="scripts/window.js"></script>
     <script src="scripts/controls.js"></script>
     <script src="scripts/date.js"></script>
+    <script src="scripts/taskbar.js"></script>
 </body>
 <style>
     body {
@@ -162,8 +187,9 @@
         background-color: lightgray;
         border-radius: 30px 30px 0 0;
         justify-content: space-between;
+        
     }
-
+    
     .taskbar-apps {
         margin: 5px;
     }
@@ -192,6 +218,48 @@
     .taskbar-center p {
         margin: 0;
         text-align: center;
+    }
+
+    .menu {
+        background-color: lightgray;
+        width: 350px;
+        height: 500px;
+        border-radius: 30px;
+        position: fixed;
+        bottom: 85px;
+        left: 5px;
+        display: none;
+        z-index: 999999;
+        border: 1px solid #000000;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .menu h1, .menu h2 {
+        margin: 10px;
+    }
+
+    .menu h2 {
+        font-size: medium;
+    }
+
+    .menu-apps {
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }
+
+    .menu-apps img {
+        width: 50px;
+        margin: 5px;
+        transition: 0.2s;
+    }
+
+    .menu-apps img:hover {
+        transform: scale(1.15)
+    }
+
+    .menu-apps img:active {
+        transform: scale(1)
     }
 
 </style>
