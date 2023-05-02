@@ -71,7 +71,12 @@
         }
 
         function go() {
-            selectedIframe.src = document.getElementById('urlInput').value;
+            let new_url = document.getElementById('urlInput').value;
+            if (new_url.startsWith("https://") || new_url.startsWith("http://")) {
+                selectedIframe.src = new_url;
+            } else {
+                selectedIframe.src = `https://${new_url}`;
+            }
         }
         
         let helpModal = document.getElementById('helpModal');
