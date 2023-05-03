@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <title>Settings</title>
+</head>
+<body>
+    <header>
+        <img src="assets/system.png" id="sys-icon">
+        <img src="assets/customize.png" id="customize-icon">
+        <img src="assets/startup.png" id="startup-icon">
+    </header>
+    <div class="settings" id="sys-settings">
+        <h2>System</h2>
+        <h3>Install App:</h3>
+        <input type="text" placeholder="URL" id="install-app-url">
+        <input type="text" placeholder="Title" id="install-app-title">
+        <input type="text" placeholder="Icon" id="install-app-icon">
+        <br>
+        <button onclick="parent.addToMenu(document.getElementById('install-app-icon').value, document.getElementById('install-app-title').value, document.getElementById('install-app-url').value)">Install</button>
+        <h3>Add App to Taskbar:</h3>
+        <input type="text" placeholder="URL" id="add-app-url">
+        <input type="text" placeholder="Title" id="add-app-title">
+        <input type="text" placeholder="Icon" id="add-app-icon">
+        <br>
+        <button onclick="parent.addToTaskbar(document.getElementById('add-app-icon').value, document.getElementById('add-app-title').value, document.getElementById('add-app-url').value)">Add</button>
+        <h3>Open App:</h3>
+        <input type="text" placeholder="URL" id="open-app-url">
+        <input type="text" placeholder="Title" id="open-app-title">
+        <input type="text" placeholder="Icon" id="open-app-icon">
+        <br>
+        <button onclick="parent.openWindow(document.getElementById('open-app-icon').value, document.getElementById('open-app-title').value, document.getElementById('open-app-url').value)">Open</button>
+    </div>
+    <div class="settings" id="customize-settings">
+        <h2>Customize</h2>
+    </div>
+    <div class="settings" id="startup-settings">
+        <h2>Startup</h2>
+    </div>
+    <script>
+        let sysIcon = document.getElementById("sys-icon");
+        let customizeIcon = document.getElementById("customize-icon");
+        let startupIcon = document.getElementById("startup-icon");
+        let sys = document.getElementById("sys-settings");
+        let customize = document.getElementById("customize-settings");
+        let startup = document.getElementById("startup-settings");
+
+        sysIcon.addEventListener("click", function() {
+            sysIcon.style.backgroundColor = "lightblue";
+            customizeIcon.style.backgroundColor = "transparent";
+            startupIcon.style.backgroundColor = "transparent";
+            sys.style.display = "block";
+            customize.style.display = "none";
+            startup.style.display = "none";
+        });
+        customizeIcon.addEventListener("click", function() {
+            customizeIcon.style.backgroundColor = "lightblue";
+            sysIcon.style.backgroundColor = "transparent";
+            startupIcon.style.backgroundColor = "transparent";
+            sys.style.display = "none";
+            customize.style.display = "block";
+            startup.style.display = "none";
+        });
+        startupIcon.addEventListener("click", function() {
+            startupIcon.style.backgroundColor = "lightblue";
+            sysIcon.style.backgroundColor = "transparent";
+            customizeIcon.style.backgroundColor = "transparent";
+            sys.style.display = "none";
+            customize.style.display = "none";
+            startup.style.display = "block";
+        });
+
+        sysIcon.style.backgroundColor = "lightblue";
+        customizeIcon.style.backgroundColor = "transparent";
+        startupIcon.style.backgroundColor = "transparent";
+        sys.style.display = "block";
+        customize.style.display = "none";
+        startup.style.display = "none";
+
+        document.addEventListener('contextmenu', event => event.preventDefault());
+    </script>
+</body>
+<style>
+    body {
+        -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* IE 10 and IE 11 */
+        user-select: none; /* Standard syntax */
+        font-family: 'Roboto', sans-serif;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    header img {
+        width: 40px;
+        cursor: pointer;
+        border-radius: 10px;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    input, button {
+        margin: 5px;
+    }
+
+</style>
+</html>
