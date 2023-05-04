@@ -139,7 +139,7 @@
                         </div>
                     </form>
                     <br>
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="parent.setStartup(document.getElementById('startup-js').value)">Set</button>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="parent.setStartup(document.getElementById('startup-js').value); parent.showNotification('Startup JS', 'Your Startup JS Code was successfully set. If the Startup JS Code does not work, check the JavaScript console, and make sure the code is valid.', 5000)">Set</button>
                 </div>
             </section>
         </main>
