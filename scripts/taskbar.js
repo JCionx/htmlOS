@@ -37,7 +37,6 @@ function addToMenu(icon, title, URL) {
     menuApps.appendChild(clonedApp);
 }
 
-
 function changeWallpaper(url) {
     document.body.style.backgroundImage = "url('" + url + "')";
 }

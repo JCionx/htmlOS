@@ -24,6 +24,13 @@
         </div>
         <iframe src="" frameborder="0" style="width: 100%; height: 100%;" class="iframe" id="iframe"></iframe>
     </div>
+    <div class="notification" id="notification">
+        <div class="notification-header">
+            <h3 class="notification-title">Title</h3>
+            <img src="assets/close.png" id="notification-close">
+        </div>
+        <p class="notification-text">Text</p>
+    </div>
     <div class="menu" id="menu">
         <h1>Apps</h1>
         <h2>System Apps</h2>
@@ -53,6 +60,7 @@
     <script src="scripts/controls.js"></script>
     <script src="scripts/date.js"></script>
     <script src="scripts/taskbar.js"></script>
+    <script src="scripts/notifications.js"></script>
 </body>
 <style>
     body {
@@ -254,6 +262,36 @@
 
     .menu-apps img:active {
         transform: scale(1)
+    }
+
+    .notification {
+        background-color: white;
+        width: 350px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        border: solid black 1px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+        padding: 5px;
+        display: none;
+        z-index: 999999;
+    }
+
+    .notification-header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .notification-header img {
+        width: 16px;
+        height: 16px;
+        margin: 3px;
+        cursor: pointer;
+    }
+
+    .notification-header h3, .notification p {
+        margin: 3px;
     }
 
 </style>
