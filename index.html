@@ -36,7 +36,7 @@
         <div class="menu-apps" id="user-apps">
         </div>
     </div>
-    <footer>
+    <footer id="taskbar-div">
         <div class="taskbar-apps">
             <img src="assets/menu.png" onclick="toggleMenu()">
             <img src="assets/browser.png" id="taskbar-app" onclick="openWindow('assets/browser.png', 'Browser', 'apps/browser/index.html')">
@@ -222,12 +222,12 @@
         left: 5px;
         display: none;
         z-index: 999999;
-        border: 1px solid #000000;
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
     }
 
     .menu h1, .menu h2 {
         margin: 10px;
+        text-align: center;
     }
 
     .menu h2 {

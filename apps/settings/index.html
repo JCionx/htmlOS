@@ -23,24 +23,36 @@
         <input type="text" placeholder="Icon" id="install-app-icon">
         <br>
         <button onclick="parent.addToMenu(document.getElementById('install-app-icon').value, document.getElementById('install-app-title').value, document.getElementById('install-app-url').value)">Install</button>
+        <button onclick="navigator.clipboard.writeText(`addToMenu('${document.getElementById('install-app-icon').value}', '${document.getElementById('install-app-title').value}', '${document.getElementById('install-app-url').value}')`)">Copy Code</button>
         <h3>Add App to Taskbar:</h3>
         <input type="text" placeholder="URL" id="add-app-url">
         <input type="text" placeholder="Title" id="add-app-title">
         <input type="text" placeholder="Icon" id="add-app-icon">
         <br>
         <button onclick="parent.addToTaskbar(document.getElementById('add-app-icon').value, document.getElementById('add-app-title').value, document.getElementById('add-app-url').value)">Add</button>
+        <button onclick="navigator.clipboard.writeText(`addToTaskbar('${document.getElementById('add-app-icon').value}', '${document.getElementById('add-app-title').value}', '${document.getElementById('add-app-url').value}')`)">Copy Code</button>
         <h3>Open App:</h3>
         <input type="text" placeholder="URL" id="open-app-url">
         <input type="text" placeholder="Title" id="open-app-title">
         <input type="text" placeholder="Icon" id="open-app-icon">
         <br>
         <button onclick="parent.openWindow(document.getElementById('open-app-icon').value, document.getElementById('open-app-title').value, document.getElementById('open-app-url').value)">Open</button>
+        <button onclick="navigator.clipboard.writeText(`openWindow('${document.getElementById('open-app-icon').value}', '${document.getElementById('open-app-title').value}', '${document.getElementById('open-app-url').value}')`)">Copy Code</button>
     </div>
     <div class="settings" id="customize-settings">
         <h2>Customize</h2>
+        <h3>Change Wallpaper:</h3>
+        <input type="text" placeholder="URL" id="wallpaper-url">
+        <br>
+        <button onclick="parent.changeWallpaper(document.getElementById('wallpaper-url').value)">Change</button>
+        <button onclick="navigator.clipboard.writeText(`changeWallpaper('${document.getElementById('wallpaper-url').value}')`)">Copy Code</button>	
     </div>
     <div class="settings" id="startup-settings">
         <h2>Startup</h2>
+        <h3>Startup JS Code:</h3>
+        <textarea name="startup-js" id="" cols="30" rows="10" id="startup-js"></textarea>
+        <br>
+        <button onclick="parent.setStartup(document.getElementById('startup-js').textContent)">Set</button>
     </div>
     <script>
         let sysIcon = document.getElementById("sys-icon");

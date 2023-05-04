@@ -57,4 +57,27 @@ function closeDragElement() {
 }
 }
 
+function changeWallpaper(url) {
+    document.body.style.backgroundImage = "url('" + url + "')";
+}
+
+function setStartup(code) {
+    // Store the code in localStorage.
+    console.log(code);
+    localStorage.setItem("startupCode", code);
+}
+  
+function loadStartup() {
+    // Get the code from localStorage.
+    const code = localStorage.getItem("startupCode");
+    console.log(code);
+  
+    // If there is code, execute it.
+    if (code) {
+        eval(code);
+    }
+}
+
+
+loadStartup();
 document.addEventListener('contextmenu', event => event.preventDefault());

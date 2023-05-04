@@ -8,6 +8,7 @@ function toggleMenu() {
         menu.style.display = "none";
         menuOpen = false;
     } else {
+        menu.style.bottom = document.getElementById("taskbar-div").clientHeight + 10 + "px";
         menu.style.display = "block";
         menuOpen = true;
     }
