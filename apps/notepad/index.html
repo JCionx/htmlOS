@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Plain Text Editor</title>
+     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+</head>
+<body>
+    
+    <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+        for="demo-menu-lower-left">
+      <li class="mdl-menu__item mdl-menu__item--full-bleed-divider" onclick="newFile()">New</li>
+      <li class="mdl-menu__item" id="myBtn">Save As</li>
+      <li class="mdl-menu__item" onclick="loadFile()">Load</li>
+    </ul>
+    <button id="demo-menu-lower-left"
+    class="mdl-button mdl-js-button mdl-button--icon">
+    <i class="material-icons">more_vert</i>
+    </button>
+
+    <div class="text">
+        <textarea id="editor"></textarea>
+    </div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h3>Save As</h3>
+        <form action="#">
+            <div class="mdl-textfield mdl-js-textfield">
+                <input class="mdl-textfield__input" type="text" id="sample1">
+                <label class="mdl-textfield__label" for="sample1">Filename</label>
+            </div>
+        </form>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="saveFile()">Save</button>
+    </div>
+
+    </div>
+
+    <script>
+        function saveFile() {
+            var textToSave = document.getElementById("editor").value;
+            var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
+            var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+            var fileNameToSaveAs = document.getElementById("sample1").value;
+
+            var downloadLink = document.createElement("a");
+            downloadLink.download = fileNameToSaveAs;
+            downloadLink.innerHTML = "Download File";
+            downloadLink.href = textToSaveAsURL;
+            downloadLink.onclick = destroyClickedElement;
+            downloadLink.style.display = "none";
+            document.body.appendChild(downloadLink);
+
+            downloadLink.click();
+        }
+
+        function loadFile() {
+            var fileToLoad = document.createElement("input");
+            fileToLoad.type = "file";
+            fileToLoad.addEventListener("change", function(event) {
+                var file = event.target.files[0];
+                var reader = new FileReader();
+                reader.onload = function(event) {
+                    document.getElementById("editor").value = event.target.result;
+                };
+                reader.readAsText(file);
+            });
+            fileToLoad.click();
+        }
+
+        function newFile() {
+            document.getElementById("editor").value = "";
+        }
+
+        function destroyClickedElement(event) {
+            document.body.removeChild(event.target);
+        }
+
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the button, open the modal
+        btn.onclick = function() {
+        modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+        modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+        }
+    </script>
+
+</body>
+<style>
+    textarea {
+        width: 100vw;
+        height: 100vh;
+        resize: none;
+        border: none;
+        outline: none;
+        font-size: 20px;
+        font-family: "Courier New", Courier, monospace;
+    }
+
+    /* The Modal (background) */
+    .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content/Box */
+    .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    }
+
+    /* The Close Button */
+    .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    }
+</style>
+</html> 
