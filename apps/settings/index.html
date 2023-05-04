@@ -147,45 +147,6 @@
         
     </div>
     <script>
-        let sysIcon = document.getElementById("sys-icon");
-        let customizeIcon = document.getElementById("customize-icon");
-        let startupIcon = document.getElementById("startup-icon");
-        let sys = document.getElementById("sys-settings");
-        let customize = document.getElementById("customize-settings");
-        let startup = document.getElementById("startup-settings");
-
-        sysIcon.addEventListener("click", function() {
-            sysIcon.style.backgroundColor = "lightblue";
-            customizeIcon.style.backgroundColor = "transparent";
-            startupIcon.style.backgroundColor = "transparent";
-            sys.style.display = "block";
-            customize.style.display = "none";
-            startup.style.display = "none";
-        });
-        customizeIcon.addEventListener("click", function() {
-            customizeIcon.style.backgroundColor = "lightblue";
-            sysIcon.style.backgroundColor = "transparent";
-            startupIcon.style.backgroundColor = "transparent";
-            sys.style.display = "none";
-            customize.style.display = "block";
-            startup.style.display = "none";
-        });
-        startupIcon.addEventListener("click", function() {
-            startupIcon.style.backgroundColor = "lightblue";
-            sysIcon.style.backgroundColor = "transparent";
-            customizeIcon.style.backgroundColor = "transparent";
-            sys.style.display = "none";
-            customize.style.display = "none";
-            startup.style.display = "block";
-        });
-
-        sysIcon.style.backgroundColor = "lightblue";
-        customizeIcon.style.backgroundColor = "transparent";
-        startupIcon.style.backgroundColor = "transparent";
-        sys.style.display = "block";
-        customize.style.display = "none";
-        startup.style.display = "none";
-
         document.addEventListener('contextmenu', event => event.preventDefault());
     </script>
 </body>
