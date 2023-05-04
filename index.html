@@ -10,6 +10,9 @@
     <title>htmlOS</title>
 </head>
 <body>
+    <div class="splash" id="splash">
+        <img src="assets/splash.png" id="splash-img">
+    </div>
     <div class="window" id="window">
         <div class="window-header" id="window-header">
             <div class="title">
@@ -61,6 +64,7 @@
     <script src="scripts/date.js"></script>
     <script src="scripts/taskbar.js"></script>
     <script src="scripts/notifications.js"></script>
+    <script src="scripts/splash.js"></script>
 </body>
 <style>
     body {
@@ -292,6 +296,24 @@
 
     .notification-header h3, .notification p {
         margin: 3px;
+    }
+
+    .splash {
+        background-color: #282828;
+        height: 100vh;
+        width: 100vw;
+        top: 0;
+        left: 0;
+        position: absolute;
+        z-index: 99999999;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .splash img {
+        width: 100vw;
+        display: none;
     }
 
 </style>
