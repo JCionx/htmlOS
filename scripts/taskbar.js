@@ -8,6 +8,7 @@ function toggleMenu() {
         menu.style.display = "none";
         menuOpen = false;
     } else {
+        menu.style.bottom = document.getElementById("taskbar-div").clientHeight + 10 + "px";
         menu.style.display = "block";
         menuOpen = true;
     }
@@ -35,3 +36,25 @@ function addToMenu(icon, title, URL) {
     clonedApp.setAttribute("onclick", `openWindow("${icon}", "${title}", "${URL}")`);
     menuApps.appendChild(clonedApp);
 }
+
+
+function changeWallpaper(url) {
+    document.body.style.backgroundImage = "url('" + url + "')";
+}
+
+function setStartup(code) {
+    // Store the code in localStorage.
+    localStorage.setItem("startupCode", code);
+}
+  
+function loadStartup() {
+    // Get the code from localStorage.
+    const code = localStorage.getItem("startupCode");
+  
+    // If there is code, execute it.
+    if (code) {
+        eval(code);
+    }
+}
+
+loadStartup();
