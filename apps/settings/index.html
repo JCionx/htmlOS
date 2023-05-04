@@ -4,55 +4,124 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="mdl/material.min.css">
+    <script src="mdl/material.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <title>Settings</title>
 </head>
 <body>
-    <header>
-        <img src="assets/system.png" id="sys-icon">
-        <img src="assets/customize.png" id="customize-icon">
-        <img src="assets/startup.png" id="startup-icon">
-    </header>
-    <div class="settings" id="sys-settings">
-        <h2>System</h2>
-        <h3>Install App:</h3>
-        <input type="text" placeholder="URL" id="install-app-url">
-        <input type="text" placeholder="Title" id="install-app-title">
-        <input type="text" placeholder="Icon" id="install-app-icon">
-        <br>
-        <button onclick="parent.addToMenu(document.getElementById('install-app-icon').value, document.getElementById('install-app-title').value, document.getElementById('install-app-url').value)">Install</button>
-        <button onclick="navigator.clipboard.writeText(`addToMenu('${document.getElementById('install-app-icon').value}', '${document.getElementById('install-app-title').value}', '${document.getElementById('install-app-url').value}')`)">Copy Code</button>
-        <h3>Add App to Taskbar:</h3>
-        <input type="text" placeholder="URL" id="add-app-url">
-        <input type="text" placeholder="Title" id="add-app-title">
-        <input type="text" placeholder="Icon" id="add-app-icon">
-        <br>
-        <button onclick="parent.addToTaskbar(document.getElementById('add-app-icon').value, document.getElementById('add-app-title').value, document.getElementById('add-app-url').value)">Add</button>
-        <button onclick="navigator.clipboard.writeText(`addToTaskbar('${document.getElementById('add-app-icon').value}', '${document.getElementById('add-app-title').value}', '${document.getElementById('add-app-url').value}')`)">Copy Code</button>
-        <h3>Open App:</h3>
-        <input type="text" placeholder="URL" id="open-app-url">
-        <input type="text" placeholder="Title" id="open-app-title">
-        <input type="text" placeholder="Icon" id="open-app-icon">
-        <br>
-        <button onclick="parent.openWindow(document.getElementById('open-app-icon').value, document.getElementById('open-app-title').value, document.getElementById('open-app-url').value)">Open</button>
-        <button onclick="navigator.clipboard.writeText(`openWindow('${document.getElementById('open-app-icon').value}', '${document.getElementById('open-app-title').value}', '${document.getElementById('open-app-url').value}')`)">Copy Code</button>
+    <!-- Simple header with fixed tabs. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
+    mdl-layout--fixed-tabs">
+        <header class="mdl-layout__header">
+            <h1 style="text-align: center; font-size: 28px; margin: 20px;">Settings</h1>
+        
+            <!-- Tabs -->
+            <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+                <a href="#fixed-tab-1" class="mdl-layout__tab is-active">System</a>
+                <a href="#fixed-tab-2" class="mdl-layout__tab">Customize</a>
+                <a href="#fixed-tab-3" class="mdl-layout__tab">Startup</a>
+            </div>
+        </header>
+        <main class="mdl-layout__content">
+            <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
+                <div class="page-content">
+                    <h3 style="font-size: 22px;">Install App:</h3>
+                    <form action="#">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="install-app-url">
+                            <label class="mdl-textfield__label" for="install-app-url">URL</label>
+                        </div>
+                        <br>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="install-app-title">
+                            <label class="mdl-textfield__label" for="install-app-title">Title</label>
+                        </div>
+                        <br>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="install-app-icon">
+                            <label class="mdl-textfield__label" for="install-app-icon">Icon</label>
+                        </div>
+                    </form>
+                    <br>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="parent.addToMenu(document.getElementById('install-app-icon').value, document.getElementById('install-app-title').value, document.getElementById('install-app-url').value)">Install</button>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="navigator.clipboard.writeText(`addToMenu('${document.getElementById('install-app-icon').value}', '${document.getElementById('install-app-title').value}', '${document.getElementById('install-app-url').value}')`)">Copy Code</button>
+
+                    <h3 style="font-size: 22px;">Add App to Taskbar:</h3>
+
+                    <form action="#">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="add-app-url">
+                            <label class="mdl-textfield__label" for="add-app-url">URL</label>
+                        </div>
+                        <br>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="add-app-title">
+                            <label class="mdl-textfield__label" for="add-app-title">Title</label>
+                        </div>
+                        <br>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="add-app-icon">
+                            <label class="mdl-textfield__label" for="add-app-icon">Icon</label>
+                        </div>
+                    </form>
+                    <br>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="parent.openWindow(document.getElementById('open-app-icon').value, document.getElementById('open-app-title').value, document.getElementById('open-app-url').value)">Add</button>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="navigator.clipboard.writeText(`addToMenu('${document.getElementById('install-app-icon').value}', '${document.getElementById('install-app-title').value}', '${document.getElementById('install-app-url').value}')`)">Copy Code</button>
+
+                    <h3 style="font-size: 22px;">Open App:</h3>
+
+                    <form action="#">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="open-app-url">
+                            <label class="mdl-textfield__label" for="open-app-url">URL</label>
+                        </div>
+                        <br>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="open-app-title">
+                            <label class="mdl-textfield__label" for="open-app-title">Title</label>
+                        </div>
+                        <br>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="open-app-icon">
+                            <label class="mdl-textfield__label" for="open-app-icon">Icon</label>
+                        </div>
+                    </form>
+                    <br>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="parent.openWindow(document.getElementById('open-app-icon').value, document.getElementById('open-app-title').value, document.getElementById('open-app-url').value)">Add</button>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="navigator.clipboard.writeText(`openWindow('${document.getElementById('open-app-icon').value}', '${document.getElementById('open-app-title').value}', '${document.getElementById('open-app-url').value}')`)">Copy Code</button>
+                </div>
+            </section>
+            <section class="mdl-layout__tab-panel" id="fixed-tab-2">
+                <div class="page-content">
+                    <h3 style="font-size: 22px;">Change Wallpaper:</h3>
+                    <form action="#">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="text" id="wallpaper-url">
+                            <label class="mdl-textfield__label" for="wallpaper-url">URL</label>
+                        </div>
+                    </form>
+                    <br>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="parent.changeWallpaper(document.getElementById('wallpaper-url').value)">Change</button>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="navigator.clipboard.writeText(`changeWallpaper('${document.getElementById('wallpaper-url').value}')`)">Copy Code</button>
+                </div>
+            </section>
+            <section class="mdl-layout__tab-panel" id="fixed-tab-3">
+                <div class="page-content">
+                    <h3 style="font-size: 22px;">Startup JS Code:</h3>
+                    <form action="#">
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <textarea class="mdl-textfield__input" type="text" rows= "3" id="startup-js"></textarea>
+                            <label class="mdl-textfield__label" for="startup-js">Startup JS Code</label>
+                        </div>
+                    </form>
+                    <br>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="parent.setStartup(document.getElementById('startup-js').value)">Set</button>
+                </div>
+            </section>
+        </main>
     </div>
-    <div class="settings" id="customize-settings">
-        <h2>Customize</h2>
-        <h3>Change Wallpaper:</h3>
-        <input type="text" placeholder="URL" id="wallpaper-url">
-        <br>
-        <button onclick="parent.changeWallpaper(document.getElementById('wallpaper-url').value)">Change</button>
-        <button onclick="navigator.clipboard.writeText(`changeWallpaper('${document.getElementById('wallpaper-url').value}')`)">Copy Code</button>	
-    </div>
-    <div class="settings" id="startup-settings">
-        <h2>Startup</h2>
-        <h3>Startup JS Code:</h3>
-        <textarea name="startup-js" id="" cols="30" rows="10" id="startup-js"></textarea>
-        <br>
-        <button onclick="parent.setStartup(document.getElementById('startup-js').textContent)">Set</button>
+        
     </div>
     <script>
         let sysIcon = document.getElementById("sys-icon");
@@ -124,5 +193,9 @@
         margin: 5px;
     }
 
+    .page-content {
+        padding: 10px;
+    }
+    
 </style>
 </html>

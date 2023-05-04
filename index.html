@@ -31,6 +31,7 @@
             <img src="assets/browser.png" id="menu-app" onclick="openWindow('assets/browser.png', 'Browser', 'apps/browser/index.html')">
             <img src="assets/clock.png" onclick="openWindow('assets/clock.png', 'Clock', 'apps/clock/index.html')">
             <img src="assets/games.png" onclick="openWindow('assets/games.png', 'Games', 'apps/games/index.html')">
+            <img src="assets/settings.png" onclick="openWindow('assets/settings.png', 'Settings', 'apps/settings/index.html')">
         </div>
         <h2>Other Apps</h2>
         <div class="menu-apps" id="user-apps">
@@ -215,7 +216,7 @@
     .menu {
         background-color: #afafaf;
         width: 350px;
-        height: 500px;
+        min-height: 500px;
         border-radius: 30px;
         position: fixed;
         bottom: 85px;
@@ -223,11 +224,11 @@
         display: none;
         z-index: 999999;
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+        padding: 10px;
     }
 
     .menu h1, .menu h2 {
         margin: 10px;
-        text-align: center;
     }
 
     .menu h2 {
@@ -236,8 +237,9 @@
 
     .menu-apps {
         display: flex;
-        justify-content: space-evenly;
+        justify-content: flex-start;
         flex-wrap: wrap;
+        padding: 5px;
     }
 
     .menu-apps img {
