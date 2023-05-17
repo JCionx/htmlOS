@@ -3,6 +3,13 @@ let menu = document.getElementById("menu");
 let menuApps = document.getElementById("user-apps");
 let taskbar = document.querySelector(".taskbar-apps");
 
+// How do I make the user drag a menu app to the taskbar?
+// Use the ondragstart event to set the data, and ondrop to get the data.
+// How?
+// https://www.w3schools.com/html/html5_draganddrop.asp
+// Thank you!
+// You're welcome!
+
 function toggleMenu() {
     if (menuOpen) {
         menu.style.display = "none";
@@ -25,6 +32,7 @@ function addToTaskbar(icon, title, URL) {
     clonedApp.setAttribute("id", " ");
     clonedApp.setAttribute("src", icon);
     clonedApp.setAttribute("onclick", `openWindow("${icon}", "${title}", "${URL}")`);
+    clonedApp.setAttribute("ondragend", "this.parentNode.removeChild(this)")
     taskbar.appendChild(clonedApp);
 }
 
@@ -34,6 +42,7 @@ function addToMenu(icon, title, URL) {
     clonedApp.setAttribute("id", " ");
     clonedApp.setAttribute("src", icon);
     clonedApp.setAttribute("onclick", `openWindow("${icon}", "${title}", "${URL}")`);
+    clonedApp.setAttribute("ondragend", "this.parentNode.removeChild(this)")
     menuApps.appendChild(clonedApp);
 }
 

@@ -51,11 +51,11 @@
     </div>
     <footer id="taskbar-div">
         <div class="taskbar-apps">
-            <img src="assets/menu.png" onclick="toggleMenu()">
-            <img src="assets/browser.png" id="taskbar-app" onclick="openWindow('assets/browser.png', 'Browser', 'apps/browser/index.html')">
-            <img src="assets/clock.png" onclick="openWindow('assets/clock.png', 'Clock', 'apps/clock/index.html')">
-            <img src="assets/notepad.png" onclick="openWindow('assets/notepad.png', 'Notepad', 'apps/notepad/index.html')">
-            <img src="assets/games.png" onclick="openWindow('assets/games.png', 'Games', 'apps/games/index.html')">
+            <img src="assets/menu.png" id="taskbar-app" onclick="toggleMenu()">
+            <img src="assets/browser.png" onclick="openWindow('assets/browser.png', 'Browser', 'apps/browser/index.html')" ondragend="this.parentNode.removeChild(this)">
+            <img src="assets/clock.png" onclick="openWindow('assets/clock.png', 'Clock', 'apps/clock/index.html')" ondragend="this.parentNode.removeChild(this)">
+            <img src="assets/notepad.png" onclick="openWindow('assets/notepad.png', 'Notepad', 'apps/notepad/index.html')" ondragend="this.parentNode.removeChild(this)">
+            <img src="assets/games.png" onclick="openWindow('assets/games.png', 'Games', 'apps/games/index.html')" ondragend="this.parentNode.removeChild(this)">
         </div>
         <div class="taskbar-center">
             <p id="taskbar-hours"></p>
