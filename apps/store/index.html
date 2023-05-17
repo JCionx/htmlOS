@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Store</h1>
+    </header>
+    <div class="apps">
+        <div class="app">
+            <img src="/assets/logo.png">
+            <h3>htmlOS VM</h3>
+            <p>Virtualize htmlOS inside htmlOS</p>
+            <div class="buttons">
+                <button onclick="parent.addToMenu('assets/logo.png', 'htmlOS VM', '#')">Install</button>
+                <button onclick="parent.addToTaskbar('assets/logo.png', 'htmlOS VM', '#')">Add to Tbar</button>
+            </div>
+        </div>
+        <div class="app">
+            <img src="assets/discord.png">
+            <h3>Discord</h3>
+            <p>Imagine a place...</p>
+            <div class="buttons">
+                <button onclick="parent.addToMenu('apps/store/assets/discord.png', 'Discord', 'https://discord.com/app')">Install</button>
+                <button onclick="parent.addToTaskbar('apps/store/assets/discord.png', 'Discord', 'https://discord.com/app')">Add to Tbar</button>
+            </div>
+        </div>
+        <script>
+            document.addEventListener('contextmenu', event => event.preventDefault());
+        </script>
+</body>
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background-color: gainsboro;
+        -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* IE 10 and IE 11 */
+        user-select: none; /* Standard syntax */
+    }
+
+    header {
+        background-color: #3f51b5;
+        color: white;
+        padding: 10px;
+        font-size: 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-align: center;
+    }
+
+    .app {
+        width: 200px;
+        background-color: #3f51b5;
+        color: white;
+        margin: 10px;
+        padding: 20px;
+        border-radius: 10px;
+        display: inline-block;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        transition: 0.2s;
+    }
+
+    .app:hover {
+        box-shadow: 2px 2px 5px 0px cornflowerblue;
+        transform: scale(1.03);
+    }
+
+    .app img {
+        width: 200px;
+        height: 200px;
+        border-radius: 10px;
+    }
+
+    .app h3 {
+        font-size: 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 10px;
+    }
+
+    .app p {
+        font-size: 15px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 10px;
+    }
+
+    .app button {
+        background-color: cornflowerblue;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px;
+        font-size: 15px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .app button:hover {
+        box-shadow: 2px 2px 5px 0px cornflowerblue;
+        transform: scale(1.05);
+    }
+
+    .app button:active {
+        transform: scale(1.0);
+    }
+
+    .apps {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+</style>
+</html>
