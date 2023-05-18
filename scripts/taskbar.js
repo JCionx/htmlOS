@@ -2,6 +2,8 @@ let menuOpen = false;
 let menu = document.getElementById("menu");
 let menuApps = document.getElementById("user-apps");
 let taskbar = document.querySelector(".taskbar-apps");
+let wifiLogo = document.getElementById("wifi-logo");
+let wifiTooltip = document.querySelector(".taskbar-div .taskbar-end .tooltip span");
 
 function toggleMenu() {
     if (menuOpen) {
@@ -36,6 +38,7 @@ function addToMenu(icon, title, URL) {
     clonedApp.setAttribute("src", icon);
     clonedApp.setAttribute("onclick", `openWindow("${icon}", "${title}", "${URL}")`);
     clonedApp.setAttribute("ondragend", "this.parentNode.removeChild(this)")
+    clonedApp.setAttribute("oncontextmenu", `addToTaskbar("${icon}", "${title}", "${URL}")`);
     menuApps.appendChild(clonedApp);
 }
 
@@ -107,4 +110,13 @@ function loadStartup() {
     }
 }
 
+window.addEventListener('online', () => {
+    wifiLogo.setAttribute("src", "assets/wifi.png");
+    wifiTooltip.innerHTML = "Connected to the Internet";
+});
+window.addEventListener('offline', () => {
+    wifiLogo.setAttribute("src", "assets/nowifi.png");
+    wifiTooltip.innerHTML = "Not connected to the Internet";
+});
+  
 loadStartup();

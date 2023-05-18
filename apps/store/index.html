@@ -17,7 +17,6 @@
             <p>Virtualize htmlOS inside htmlOS</p>
             <div class="buttons">
                 <button onclick="parent.addToMenu('assets/logo.png', 'htmlOS VM', '#')">Install</button>
-                <button onclick="parent.addToTaskbar('assets/logo.png', 'htmlOS VM', '#')">Add to Tbar</button>
             </div>
         </div>
         <div class="app">
@@ -26,11 +25,20 @@
             <p>Imagine a place...</p>
             <div class="buttons">
                 <button onclick="parent.addToMenu('apps/store/assets/discord.png', 'Discord', 'https://discord.com/app')">Install</button>
-                <button onclick="parent.addToTaskbar('apps/store/assets/discord.png', 'Discord', 'https://discord.com/app')">Add to Tbar</button>
             </div>
         </div>
         <script>
             document.addEventListener('contextmenu', event => event.preventDefault());
+
+            const buttons = document.querySelectorAll('.buttons button');
+
+            buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                button.style.backgroundColor = 'purple';
+                button.innerHTML = 'Installed';
+            });
+            });
+
         </script>
 </body>
 <style>
@@ -105,6 +113,7 @@
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         cursor: pointer;
         transition: 0.2s;
+        width: 100%;
     }
 
     .buttons {
@@ -112,17 +121,18 @@
         flex-direction: row;
         justify-content: center;
         align-items: center;
+        width: 100%;
     }
 
     .app button:hover {
-        box-shadow: 2px 2px 5px 0px cornflowerblue;
+        box-shadow: 2px 2px 10px 0px cornflowerblue;
         transform: scale(1.05);
     }
 
     .app button:active {
         transform: scale(1.0);
     }
-
+    
     .apps {
         display: flex;
         flex-direction: row;
