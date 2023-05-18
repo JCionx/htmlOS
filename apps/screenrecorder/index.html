@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screen Recorder</title>
+</head>
+<body>
+    <div>
+        <button type="button" id="buttonChoose">Choose Media</button>
+        <button type="button" id="buttonStart">Start</button>
+        <button type="button" id="buttonStop" disabled>Stop</button>
+      </div>
+      <div>
+        <video autoplay muted playsinline id="videoLive"></video>
+      </div>
+      <div>
+        <video controls playsinline id="videoRecorded"></video>
+      </div>
+      <script>
+        const buttonChoose = document.getElementById('buttonChoose');
+    
+        async function main() {
+            const buttonStart = document.getElementById('buttonStart');
+            const buttonStop = document.getElementById('buttonStop');
+            const videoLive = document.getElementById('videoLive');
+            const videoRecorded = document.getElementById('videoRecorded');
+            
+            videoLive.style.display = 'block';
+            videoRecorded.style.display = 'none';
+
+            const stream = await navigator.mediaDevices.getDisplayMedia({
+                video: true,
+                audio: true,
+            });
+    
+            videoLive.srcObject = stream;
+    
+            if (!MediaRecorder.isTypeSupported('video/webm')) {
+                console.warn('video/webm is not supported');
+            }
+    
+            const mediaRecorder = new MediaRecorder(stream, {
+                mimeType: 'video/webm',
+            });
+    
+            buttonStart.addEventListener('click', () => {
+                parent.showNotification('Screen Recorder', 'Recording Started', '3000')
+                mediaRecorder.start();
+                buttonStart.setAttribute('disabled', '');
+                buttonStop.removeAttribute('disabled');
+            });
+    
+            buttonStop.addEventListener('click', () => {
+                mediaRecorder.stop();
+                buttonStart.removeAttribute('disabled');
+                buttonStop.setAttribute('disabled', '');
+                videoLive.style.display = 'none';
+                videoRecorded.style.display = 'block';
+                parent.showNotification('Screen Recorder', 'Recording Stopped', '3000')
+            });
+    
+            const recordedChunks = []; // Store recorded chunks
+    
+            mediaRecorder.addEventListener('dataavailable', event => {
+                recordedChunks.push(event.data); // Add recorded data to the array
+            });
+    
+            mediaRecorder.addEventListener('stop', () => {
+                const blob = new Blob(recordedChunks, { type: 'video/webm' });
+                videoRecorded.src = URL.createObjectURL(blob);
+                recordedChunks.length = 0; // Clear the recordedChunks array
+            });
+        }
+    
+        buttonChoose.addEventListener('click', () => {
+            main();
+        });
+    </script>
+</body>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+        background-color: #eee;
+    }
+    div {
+        margin: 10px;
+    }
+    button {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background: #eee;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+    button:disabled {
+        background: #ddd;
+        cursor: default;
+        cursor: not-allowed;
+    }
+    video {
+        width: 100%;
+        max-width: 800px;
+        display: none;
+        border-radius: 10px;
+    }
+    button:hover {
+        background: #ddd;
+    }
+</style>
+</html>
