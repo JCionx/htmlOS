@@ -113,11 +113,11 @@
                     <br>
 
                     <h3 style="font-size: 22px;">Browser Permissions:</h3>
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="navigator.mediaDevices.getUserMedia({ video: true })">Camera Permission</button>
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="navigator.mediaDevices.getUserMedia({ audio: true })">Microphone Permission</button>
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="navigator.geolocation.getCurrentPosition();">Location Permission</button>
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="Notification.requestPermission()">Notifications Permission</button>
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="navigator.clipboard.readText()">Clipboard Permission</button>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="parent.navigator.mediaDevices.getUserMedia({ video: true })">Camera Permission</button>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="parent.navigator.mediaDevices.getUserMedia({ audio: true })">Microphone Permission</button>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="parent.navigator.geolocation.getCurrentPosition();">Location Permission</button>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="parent.Notification.requestPermission()">Notifications Permission</button>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="parent.navigator.clipboard.readText()">Clipboard Permission</button>
                     <br>
                 </div>
             </section>
