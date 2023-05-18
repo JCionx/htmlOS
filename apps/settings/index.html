@@ -111,8 +111,14 @@
                         </div>
                     </form>
                     <br>
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="parent.showNotification(document.getElementById('notification-title').value, document.getElementById('notification-content').value, document.getElementById('notification-timeout').value)">Show</button>
-                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="navigator.clipboard.writeText(`showNotification('${document.getElementById('notification-title').value}', '${document.getElementById('notification-content').value}', '${document.getElementById('notification-timeout').value}')`)">Copy Code</button>
+
+                    <h3 style="font-size: 22px;">Browser Permissions:</h3>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="navigator.mediaDevices.getUserMedia({ video: true })">Camera Permission</button>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="navigator.mediaDevices.getUserMedia({ audio: true })">Microphone Permission</button>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="navigator.geolocation.getCurrentPosition();">Location Permission</button>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="Notification.requestPermission()">Notifications Permission</button>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="navigator.clipboard.readText()">Clipboard Permission</button>
+                    <br>
                 </div>
             </section>
             <section class="mdl-layout__tab-panel" id="fixed-tab-2">
